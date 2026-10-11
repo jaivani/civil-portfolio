@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaivani G | Civil Draftsman Portfolio</title>
+
+<style>
+:root {
+  --bg: #0b1422;
+  --panel: #121f31;
+  --teal: #20d6c5;
+  --white: #f4f7fb;
+  --muted: #a6b3c4;
+  --line: #26374b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.highlight, .logo span {
+  color: var(--teal);
+}
+
+.eyebrow {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 18px;
+}
+
+p {
+  color: var(--muted);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #0b1422;
+  border-bottom: 1px solid var(--line);
+}
+
+nav {
+  min-height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: var(--teal);
+}
+
+.menu {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 78% 35%, #16444b, transparent 35%),
+    var(--bg);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.hero-description {
+  max-width: 580px;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid var(--teal);
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: #07151b;
+}
+
+.btn-outline {
+  color: var(--teal);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.photo-frame {
+  width: min(100%, 340px);
+  aspect-ratio: 4 / 5;
+  margin: auto;
+  padding: 9px;
+  border: 2px solid var(--teal);
+  border-radius: 18px;
+  background: var(--panel);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.section-title {
+  margin-bottom: 35px;
+}
+
+.about-box, .skill-card, .project-card,
+.contact-form {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.about-box {
+  padding: 30px;
+}
+
+.about-box p + p {
+  margin-top: 15px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 25px;
+  transition: .25s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--teal);
+}
+
+.skill-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.skill-card h3 {
+  margin-bottom: 8px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.project-card {
+  overflow: hidden;
+}
+
+.project-image {
+  height: 280px;
+  background: #070c13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: .25s;
+}
+
+.project-image:hover img {
+  transform: scale(1.03);
+}
+
+.project-info {
+  padding: 22px;
+}
+
+.project-tag {
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.project-info h3 {
+  margin: 7px 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-details {
+  margin-top: 25px;
+}
+
+.contact-item {
+  margin-bottom: 18px;
+}
+
+.contact-item strong {
+  display: block;
+}
+
+.contact-item a {
+  color: var(--teal);
+  overflow-wrap: anywhere;
+}
+
+.contact-form {
+  padding: 25px;
+}
+
+.contact-form h3 {
+  font-size: 23px;
+}
+
+.contact-form label {
+  display: block;
+  margin: 13px 0 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #34465b;
+  border-radius: 6px;
+  background: var(--bg);
+  color: white;
+  font: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.form-note {
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 25px 0;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.94);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 82vh;
+  object-fit: contain;
+}
+
+.lightbox p {
+  color: white;
+  margin-top: 12px;
+}
+
+.lightbox button {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  color: white;
+  font-size: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  section {
+    padding: 60px 0;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    padding: 20px 5%;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero-grid, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-description {
+    margin: 0 auto 25px;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .photo-frame {
+    max-width: 270px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 440px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    height: 220px;
+  }
+
+  .about-box, .contact-form {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">CIVIL<span>CAD.</span></a>
+
+    <button class="menu" id="menuButton"
+      aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+      <p class="eyebrow">CIVIL DRAFTING &amp; DESIGN</p>
+
+      <h1>Hello, I'm
+        <span class="highlight">Jaivani G</span>
+      </h1>
+
+      <h2 style="font-size:clamp(21px,3vw,29px)">
+        Civil Draftsman &amp;
+        <span class="highlight">CAD Designer</span>
+      </h2>
+
+      <p class="hero-description">
+        I am interested in residential building drawings,
+        AutoCAD drafting, SketchUp modelling and architectural
+        design. I am looking for an opportunity to improve my
+        skills and contribute to a professional team.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">
+          View My Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <div class="photo-frame">
+      <img src="pic/pic%20p.jpg"
+        alt="Jaivani profile photo"
+        onerror="this.onerror=null;this.src='pic/image.png';">
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">ABOUT ME</p>
+      <h2>A Little <span class="highlight">About Me</span></h2>
+    </div>
+
+    <div class="about-box">
+      <p>
+        I am an aspiring Civil Draftsman with an interest in
+        building planning, technical drawings and architectural
+        design. I have practised AutoCAD residential floor plans
+        and building elevation drawings.
+      </p>
+
+      <p>
+        I am continuing to improve my skills in AutoCAD and
+        SketchUp. My goal is to join a civil engineering,
+        architecture or design company where I can develop
+        professionally and contribute to quality drafting work.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">WHAT I AM LEARNING</p>
+      <h2>My <span class="highlight">Skills</span></h2>
+      <p>Technical skills I am developing.</p>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <div class="skill-icon">📐</div>
+        <h3>AutoCAD</h3>
+        <p>2D drafting, residential floor plans, elevations and layouts.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">🏠</div>
+        <h3>SketchUp</h3>
+        <p>Learning 3D modelling and architectural visualization.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">📏</div>
+        <h3>Building Drawings</h3>
+        <p>Floor plans, dimensions, doors, windows and building layouts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-title">
+      <p class="eyebrow">MY WORK SAMPLES</p>
+      <h2>My <span class="highlight">Projects</span></h2>
+      <p>Select a drawing to view it in a larger size.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="Residential Drawing">
+          <img src="pic/image.png"
+            alt="Residential AutoCAD drawing" loading="lazy">
+        </div>
+        <div class="project-info">
+          <span class="project-tag">AUTOCAD • DRAWING</span>
+          <h3>Residential Drawing</h3>
+          <p>AutoCAD drawing sample from my drafting practice.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="Floor Plan Practice">
+          <img src="pic/image%20copy.png"
+            alt="AutoCAD floor plan" loading="lazy">
+        </div>
+        <div class="project-info">
+          <span class="project-tag">AUTOCAD • FLOOR PLAN</span>
+          <h3>Floor Plan Practice</h3>
+          <p>Residential layout and planning drawing sample.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="Building Elevation">
+          <img src="pic/image%20copy%202.png"
+            alt="Building elevation drawing" loading="lazy">
+        </div>
+        <div class="project-info">
+          <span class="project-tag">AUTOCAD • ELEVATION</span>
+          <h3>Building Elevation</h3>
+          <p>Building drawing sample showing drafting details.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="Additional Design Sample">
+          <img src="pic/image%20copy%203.png"
+            alt="Additional CAD design" loading="lazy">
+        </div>
+        <div class="project-info">
+          <span class="project-tag">CAD • DESIGN</span>
+          <h3>Additional Design Sample</h3>
+          <p>Another sample from my civil drafting portfolio.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container contact-grid">
+
+    <div>
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h2>Contact <span class="highlight">Me</span></h2>
+
+      <p>
+        I am looking for opportunities as a Civil Draftsman,
+        AutoCAD Draftsman or Junior CAD Designer.
+      </p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <strong>Email</strong>
+          <a href="mailto:jaivanig11@gmail.com">
+            jaivanig11@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <strong>Phone</strong>
+          <a href="tel:+916369499323">
+            +91 6369499323
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <strong>Location</strong>
+          <p>Bengaluru, Karnataka, India</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <h3>Send a Message</h3>
+
+      <label for="visitorName">Your Name</label>
+      <input id="visitorName" type="text"
+        required placeholder="Enter your name">
+
+      <label for="visitorEmail">Your Email</label>
+      <input id="visitorEmail" type="email"
+        required placeholder="Enter your email">
+
+      <label for="visitorMessage">Message</label>
+      <textarea id="visitorMessage" rows="5"
+        required placeholder="Write your message"></textarea>
+
+      <button type="submit" class="btn btn-primary">
+        Prepare Email ↗
+      </button>
+
+      <p class="form-note" id="formNote">
+        Your email application will open to send the message.
+      </p>
+    </form>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Jaivani G · Civil Draftsman Portfolio</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"
+  aria-hidden="true" role="dialog">
+  <button id="closeLightbox" aria-label="Close image">×</button>
+  <img src="" alt="" id="largeImage">
+  <p id="imageCaption"></p>
+</div>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// Mobile navigation
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+  const opened = navLinks.classList.toggle("open");
+  menuButton.textContent = opened ? "×" : "☰";
+  menuButton.setAttribute("aria-expanded", String(opened));
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuButton.textContent = "☰";
+    menuButton.setAttribute("aria-expanded", "false");
+  });
+});
+
+// Project image preview
+const lightbox = document.getElementById("lightbox");
+const largeImage = document.getElementById("largeImage");
+const imageCaption = document.getElementById("imageCaption");
+
+function openImage(card) {
+  const image = card.querySelector("img");
+
+  if (!image.complete || image.naturalWidth === 0) {
+    alert("Please check the image file inside the pic folder.");
+    return;
+  }
+
+  largeImage.src = image.src;
+  largeImage.alt = image.alt;
+  imageCaption.textContent = card.dataset.title;
+
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("no-scroll");
+}
+
+function closeImage() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  largeImage.src = "";
+  document.body.classList.remove("no-scroll");
+}
+
+document.querySelectorAll(".project-image").forEach(card => {
+  card.addEventListener("click", () => openImage(card));
+
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openImage(card);
+    }
+  });
+});
+
+document.getElementById("closeLightbox")
+  .addEventListener("click", closeImage);
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closeImage();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeImage();
+});
+
+// Contact form opens the visitor's email application
+document.getElementById("contactForm")
+  .addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = document.getElementById("visitorName").value.trim();
+    const email = document.getElementById("visitorEmail").value.trim();
+    const message = document.getElementById("visitorMessage").value.trim();
+
+    const subject = encodeURIComponent("Portfolio enquiry from " + name);
+    const body = encodeURIComponent(
+      "Name: " + name +
+      "\nEmail: " + email +
+      "\n\nMessage:\n" + message
+    );
+
+    document.getElementById("formNote").textContent =
+      "Your email application should open. Press Send to complete your enquiry.";
+
+    window.location.href =
+      "mailto:jaivanig11@gmail.com?subject=" +
+      subject + "&body=" + body;
+  });
+</script>
+
+</body>
+</html>
