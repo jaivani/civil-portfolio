@@ -52,7 +52,8 @@ section {
   padding: 80px 0;
 }
 
-.highlight, .logo span {
+.highlight,
+.logo span {
   color: var(--teal);
 }
 
@@ -78,6 +79,8 @@ h2 {
 p {
   color: var(--muted);
 }
+
+/* NAVIGATION */
 
 header {
   position: sticky;
@@ -109,6 +112,7 @@ nav {
 .nav-links a {
   color: var(--muted);
   font-size: 14px;
+  transition: color .3s;
 }
 
 .nav-links a:hover {
@@ -124,10 +128,13 @@ nav {
   cursor: pointer;
 }
 
+/* HERO SECTION */
+
 .hero {
-  min-height: 580px;
+  min-height: 620px;
   display: flex;
   align-items: center;
+  overflow: hidden;
   background:
     radial-gradient(circle at 78% 35%, #16444b, transparent 35%),
     var(--bg);
@@ -158,6 +165,7 @@ nav {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  transition: .3s;
 }
 
 .btn-primary {
@@ -170,16 +178,82 @@ nav {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(32, 214, 197, .15);
 }
 
-.photo-frame {
-  width: min(100%, 340px);
-  aspect-ratio: 4 / 5;
+/* CREATIVE PROFILE IMAGE FRAME */
+
+.photo-area {
+  position: relative;
+  width: 350px;
+  height: 420px;
   margin: auto;
-  padding: 9px;
-  border: 2px solid var(--teal);
-  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Decorative glow */
+
+.photo-glow {
+  position: absolute;
+  width: 290px;
+  height: 350px;
+  background: rgba(32, 214, 197, .15);
+  filter: blur(45px);
+  border-radius: 50%;
+}
+
+/* Irregular geometric frame */
+
+.photo-frame {
+  position: relative;
+  width: 290px;
+  height: 350px;
+  padding: 7px;
+  background: linear-gradient(
+    145deg,
+    var(--teal),
+    #287c9a,
+    #172b44
+  );
+
+  clip-path: polygon(
+    15% 0,
+    83% 0,
+    100% 15%,
+    100% 78%,
+    83% 100%,
+    12% 100%,
+    0 84%,
+    0 18%
+  );
+
+  filter: drop-shadow(0 0 20px rgba(32, 214, 197, .3));
+  transition: transform .4s ease;
+}
+
+.photo-frame:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+.photo-frame-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  clip-path: polygon(
+    15% 0,
+    83% 0,
+    100% 15%,
+    100% 78%,
+    83% 100%,
+    12% 100%,
+    0 84%,
+    0 18%
+  );
+
   background: var(--panel);
 }
 
@@ -187,14 +261,56 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  object-position: center;
+  transition: transform .5s;
 }
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* Floating decorative circles */
+
+.decor-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(32, 214, 197, .5);
+}
+
+.circle-one {
+  width: 55px;
+  height: 55px;
+  top: 20px;
+  right: 5px;
+  background: rgba(32, 214, 197, .08);
+}
+
+.circle-two {
+  width: 25px;
+  height: 25px;
+  bottom: 40px;
+  left: 5px;
+  background: rgba(32, 214, 197, .15);
+}
+
+.circle-three {
+  width: 12px;
+  height: 12px;
+  top: 85px;
+  left: 10px;
+  background: var(--teal);
+  box-shadow: 0 0 20px var(--teal);
+}
+
+/* SECTION TITLES */
 
 .section-title {
   margin-bottom: 35px;
 }
 
-.about-box, .skill-card, .project-card,
+.about-box,
+.skill-card,
+.project-card,
 .contact-form {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -208,6 +324,8 @@ nav {
 .about-box p + p {
   margin-top: 15px;
 }
+
+/* SKILLS */
 
 .skills-grid {
   display: grid;
@@ -234,6 +352,8 @@ nav {
   margin-bottom: 8px;
 }
 
+/* PROJECTS */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -242,6 +362,12 @@ nav {
 
 .project-card {
   overflow: hidden;
+  transition: transform .3s, border-color .3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--teal);
 }
 
 .project-image {
@@ -258,7 +384,7 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: .25s;
+  transition: transform .25s;
 }
 
 .project-image:hover img {
@@ -279,6 +405,8 @@ nav {
 .project-info h3 {
   margin: 7px 0;
 }
+
+/* CONTACT */
 
 .contact-grid {
   display: grid;
@@ -342,18 +470,22 @@ nav {
   margin-top: 12px;
 }
 
+/* FOOTER */
+
 footer {
   border-top: 1px solid var(--line);
   text-align: center;
   padding: 25px 0;
 }
 
+/* IMAGE LIGHTBOX */
+
 .lightbox {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(0,0,0,.94);
+  background: rgba(0, 0, 0, .94);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -390,6 +522,8 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* TABLET AND MOBILE */
+
 @media (max-width: 760px) {
   section {
     padding: 60px 0;
@@ -419,7 +553,8 @@ body.no-scroll {
     padding: 60px 0;
   }
 
-  .hero-grid, .contact-grid {
+  .hero-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
@@ -435,8 +570,15 @@ body.no-scroll {
     justify-content: center;
   }
 
+  .photo-area {
+    width: 300px;
+    height: 370px;
+    margin-top: 20px;
+  }
+
   .photo-frame {
-    max-width: 270px;
+    width: 255px;
+    height: 315px;
   }
 
   .skills-grid {
@@ -457,8 +599,19 @@ body.no-scroll {
     height: 220px;
   }
 
-  .about-box, .contact-form {
+  .about-box,
+  .contact-form {
     padding: 20px;
+  }
+
+  .photo-area {
+    width: 270px;
+    height: 330px;
+  }
+
+  .photo-frame {
+    width: 225px;
+    height: 280px;
   }
 }
 </style>
@@ -484,13 +637,17 @@ body.no-scroll {
 </header>
 
 <main>
+
+<!-- HOME SECTION -->
+
 <section class="hero" id="home">
   <div class="container hero-grid">
 
     <div class="hero-content">
       <p class="eyebrow">CIVIL DRAFTING &amp; DESIGN</p>
 
-      <h1>Hello, I'm
+      <h1>
+        Hello, I'm
         <span class="highlight">Jaivani G</span>
       </h1>
 
@@ -510,23 +667,39 @@ body.no-scroll {
         <a href="#projects" class="btn btn-primary">
           View My Projects
         </a>
+
         <a href="#contact" class="btn btn-outline">
           Contact Me
         </a>
       </div>
     </div>
 
-    <div class="photo-frame">
-      <img src="pic/pic%20p.jpg"
-        alt="Jaivani profile photo"
-        onerror="this.onerror=null;this.src='pic/image.png';">
+    <!-- Replace pic/pic p.jpg with your own photo file -->
+
+    <div class="photo-area">
+      <div class="photo-glow"></div>
+      <div class="decor-circle circle-one"></div>
+      <div class="decor-circle circle-two"></div>
+      <div class="decor-circle circle-three"></div>
+
+      <div class="photo-frame">
+        <div class="photo-frame-inner">
+          <img
+            src="pic/pic%20p.jpg"
+            alt="Jaivani profile photo"
+            onerror="this.onerror=null;this.src='pic/profile.jpg';">
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
+<!-- ABOUT SECTION -->
+
 <section id="about">
   <div class="container">
+
     <div class="section-title">
       <p class="eyebrow">ABOUT ME</p>
       <h2>A Little <span class="highlight">About Me</span></h2>
@@ -547,11 +720,15 @@ body.no-scroll {
         professionally and contribute to quality drafting work.
       </p>
     </div>
+
   </div>
 </section>
 
+<!-- SKILLS SECTION -->
+
 <section id="skills">
   <div class="container">
+
     <div class="section-title">
       <p class="eyebrow">WHAT I AM LEARNING</p>
       <h2>My <span class="highlight">Skills</span></h2>
@@ -559,6 +736,7 @@ body.no-scroll {
     </div>
 
     <div class="skills-grid">
+
       <article class="skill-card">
         <div class="skill-icon">📐</div>
         <h3>AutoCAD</h3>
@@ -568,7 +746,7 @@ body.no-scroll {
       <article class="skill-card">
         <div class="skill-icon">🏠</div>
         <h3>SketchUp</h3>
-        <p>Learning 3D modelling and architectural visualization.</p>
+        <p>3D modelling and architectural visualization.</p>
       </article>
 
       <article class="skill-card">
@@ -576,12 +754,16 @@ body.no-scroll {
         <h3>Building Drawings</h3>
         <p>Floor plans, dimensions, doors, windows and building layouts.</p>
       </article>
+
     </div>
   </div>
 </section>
 
+<!-- PROJECTS SECTION -->
+
 <section id="projects">
   <div class="container">
+
     <div class="section-title">
       <p class="eyebrow">MY WORK SAMPLES</p>
       <h2>My <span class="highlight">Projects</span></h2>
@@ -596,6 +778,7 @@ body.no-scroll {
           <img src="pic/image.png"
             alt="Residential AutoCAD drawing" loading="lazy">
         </div>
+
         <div class="project-info">
           <span class="project-tag">AUTOCAD • DRAWING</span>
           <h3>Residential Drawing</h3>
@@ -609,6 +792,7 @@ body.no-scroll {
           <img src="pic/image%20copy.png"
             alt="AutoCAD floor plan" loading="lazy">
         </div>
+
         <div class="project-info">
           <span class="project-tag">AUTOCAD • FLOOR PLAN</span>
           <h3>Floor Plan Practice</h3>
@@ -622,6 +806,7 @@ body.no-scroll {
           <img src="pic/image%20copy%202.png"
             alt="Building elevation drawing" loading="lazy">
         </div>
+
         <div class="project-info">
           <span class="project-tag">AUTOCAD • ELEVATION</span>
           <h3>Building Elevation</h3>
@@ -635,6 +820,7 @@ body.no-scroll {
           <img src="pic/image%20copy%203.png"
             alt="Additional CAD design" loading="lazy">
         </div>
+
         <div class="project-info">
           <span class="project-tag">CAD • DESIGN</span>
           <h3>Additional Design Sample</h3>
@@ -642,9 +828,53 @@ body.no-scroll {
         </div>
       </article>
 
+      <!-- NEW SKETCHUP PROJECT -->
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="SketchUp 3D Residential Model">
+          <img src="pic/sketchup-interior.jpg.jpeg"
+            alt="SketchUp 3D residential house model"
+            loading="lazy">
+        </div>
+
+        <div class="project-info">
+          <span class="project-tag">SKETCHUP • 3D MODELLING</span>
+          <h3>3D Residential Model</h3>
+          <p>
+            A 3D residential interior and building model featuring
+            room layouts, staircase design, floor finishes and
+            architectural details created using SketchUp.
+          </p>
+        </div>
+      </article>
+
+      <!-- NEW SKETCHUP FLOOR PLAN -->
+
+      <article class="project-card">
+        <div class="project-image" tabindex="0"
+          role="button" data-title="SketchUp Residential Floor Plan">
+          <img src="pic/sketchup-interior.jpg (2).jpeg"
+            alt="SketchUp residential floor plan"
+            loading="lazy">
+        </div>
+
+        <div class="project-info">
+          <span class="project-tag">SKETCHUP • FLOOR PLAN</span>
+          <h3>Residential Floor Plan</h3>
+          <p>
+            A residential floor plan showing room arrangements,
+            staircase placement, furniture layouts and circulation
+            spaces in a 3D design.
+          </p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
+
+<!-- CONTACT SECTION -->
 
 <section id="contact">
   <div class="container contact-grid">
@@ -659,6 +889,7 @@ body.no-scroll {
       </p>
 
       <div class="contact-details">
+
         <div class="contact-item">
           <strong>Email</strong>
           <a href="mailto:jaivanig11@gmail.com">
@@ -677,6 +908,7 @@ body.no-scroll {
           <strong>Location</strong>
           <p>Bengaluru, Karnataka, India</p>
         </div>
+
       </div>
     </div>
 
@@ -706,17 +938,28 @@ body.no-scroll {
 
   </div>
 </section>
+
 </main>
+
+<!-- FOOTER -->
 
 <footer>
   <div class="container">
-    <p>© <span id="year"></span> Jaivani G · Civil Draftsman Portfolio</p>
+    <p>
+      © <span id="year"></span> Jaivani G · Civil Draftsman Portfolio
+    </p>
   </div>
 </footer>
 
+<!-- IMAGE LIGHTBOX -->
+
 <div class="lightbox" id="lightbox"
-  aria-hidden="true" role="dialog">
-  <button id="closeLightbox" aria-label="Close image">×</button>
+  aria-hidden="true" role="dialog"
+  aria-label="Project image preview">
+
+  <button id="closeLightbox"
+    aria-label="Close image">×</button>
+
   <img src="" alt="" id="largeImage">
   <p id="imageCaption"></p>
 </div>
@@ -725,14 +968,20 @@ body.no-scroll {
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
-// Mobile navigation
+/* MOBILE NAVIGATION */
+
 const menuButton = document.getElementById("menuButton");
 const navLinks = document.getElementById("navLinks");
 
 menuButton.addEventListener("click", () => {
   const opened = navLinks.classList.toggle("open");
+
   menuButton.textContent = opened ? "×" : "☰";
-  menuButton.setAttribute("aria-expanded", String(opened));
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    String(opened)
+  );
 });
 
 navLinks.querySelectorAll("a").forEach(link => {
@@ -743,7 +992,8 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-// Project image preview
+/* PROJECT IMAGE PREVIEW */
+
 const lightbox = document.getElementById("lightbox");
 const largeImage = document.getElementById("largeImage");
 const imageCaption = document.getElementById("imageCaption");
@@ -752,7 +1002,9 @@ function openImage(card) {
   const image = card.querySelector("img");
 
   if (!image.complete || image.naturalWidth === 0) {
-    alert("Please check the image file inside the pic folder.");
+    alert(
+      "Please check the image filename and ensure it is inside the pic folder."
+    );
     return;
   }
 
@@ -762,13 +1014,16 @@ function openImage(card) {
 
   lightbox.classList.add("open");
   lightbox.setAttribute("aria-hidden", "false");
+
   document.body.classList.add("no-scroll");
 }
 
 function closeImage() {
   lightbox.classList.remove("open");
   lightbox.setAttribute("aria-hidden", "true");
+
   largeImage.src = "";
+
   document.body.classList.remove("no-scroll");
 }
 
@@ -787,23 +1042,40 @@ document.getElementById("closeLightbox")
   .addEventListener("click", closeImage);
 
 lightbox.addEventListener("click", event => {
-  if (event.target === lightbox) closeImage();
+  if (event.target === lightbox) {
+    closeImage();
+  }
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeImage();
+  if (event.key === "Escape") {
+    closeImage();
+  }
 });
 
-// Contact form opens the visitor's email application
+/* CONTACT FORM */
+
 document.getElementById("contactForm")
   .addEventListener("submit", event => {
+
     event.preventDefault();
 
-    const name = document.getElementById("visitorName").value.trim();
-    const email = document.getElementById("visitorEmail").value.trim();
-    const message = document.getElementById("visitorMessage").value.trim();
+    const name = document
+      .getElementById("visitorName")
+      .value.trim();
 
-    const subject = encodeURIComponent("Portfolio enquiry from " + name);
+    const email = document
+      .getElementById("visitorEmail")
+      .value.trim();
+
+    const message = document
+      .getElementById("visitorMessage")
+      .value.trim();
+
+    const subject = encodeURIComponent(
+      "Portfolio enquiry from " + name
+    );
+
     const body = encodeURIComponent(
       "Name: " + name +
       "\nEmail: " + email +
